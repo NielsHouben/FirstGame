@@ -10,10 +10,13 @@ public class TimerController : MonoBehaviour
 
     public Text timeCounter;
 
-    private TimeSpan timePlaying;
+    public  TimeSpan timePlaying;
+
+    public string timePlayingString;
+
     private bool timerGoing;
 
-    private float elapsedTime;
+    public float elapsedTime;
 
     private void Awake()
     {
@@ -53,8 +56,9 @@ public class TimerController : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             timePlaying = TimeSpan.FromSeconds(elapsedTime);
-            string timePlayingStr = "Time: " + timePlaying.ToString("mm':'ss'.'ff");
-            timeCounter.text = timePlayingStr;
+            timePlayingString = "" + timePlaying.ToString("mm':'ss'.'ff");
+            // timeCounter.text = timePlayingStr;
+            // Debug.Log(timePlayingString);
 
             yield return null;
         }

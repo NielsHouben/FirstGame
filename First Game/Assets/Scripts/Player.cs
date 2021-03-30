@@ -44,15 +44,13 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) 
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             jumpKeyWasPressed = true;
             // jump();
         }
-        if (Input.GetKeyDown(KeyCode.R)) {
-            // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+
+
 
         horizontalInput = Input.GetAxis("Horizontal");
     }
@@ -88,6 +86,7 @@ public class Player : MonoBehaviour
             score++;
         }
         if (other.CompareTag("JumpBoost")) { 
+            
             Destroy(other.gameObject);
             superJumpsRemaining++;
         }
@@ -96,6 +95,8 @@ public class Player : MonoBehaviour
             availableJumps++;
         }
         if (other.CompareTag("SpeedBoost")) { 
+            // other.ParticleSystem.Play();
+
             Destroy(other.gameObject);
             speedTime = 180;
         }
