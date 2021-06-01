@@ -8,7 +8,7 @@ public class TimerController : MonoBehaviour
 {
     public static TimerController instance;
 
-    public Text timeCounter;
+    public Text timeCounter; // makes the time public so that it can be used from another script to actually display the speedrun timer
 
     public  TimeSpan timePlaying;
 
@@ -30,14 +30,14 @@ public class TimerController : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void Start() // will be called on scene creation.
     {
         timeCounter.text = "Time: 00:00.00";
         timerGoing = false;
         BeginTimer();
     }
     
-    public void BeginTimer()
+    public void BeginTimer() // will also be called on scene cration
     {
         timerGoing = true;
         elapsedTime = 0f;
@@ -45,12 +45,12 @@ public class TimerController : MonoBehaviour
         StartCoroutine(UpdateTimer());
     }
 
-    public void EndTimer()
+    public void EndTimer() //will be called when finish reached
     {
         timerGoing = false;
     }
 
-    private IEnumerator UpdateTimer()
+    private IEnumerator UpdateTimer() // simply adds the time between frames to a timer after each frame untill timergoing is toggled off.
     {
         while (timerGoing)
         {
