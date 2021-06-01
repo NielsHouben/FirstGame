@@ -7,5 +7,5 @@ This is a 2.5D speed-running game. There are of course some classic spikes and p
 ### **Problems**
 I had some problems implementing the extra jumps functionality because I needed to make sure infinite jumps weren’t obtainable. My first implementation of this powerup just gave you another jump whenever you touched a surface so that regular jumping would still be allowed. However, that allowed a player to touch a wall mid-air, and then land, giving 2 jumps without taking a powerup. I solved this by adding a collision box at the players feet checking for actual ground touches. 
 
-### **future thnking**
+### **Future Thnking**
 There has been some progress , but I would still consider the game under early development. I have yet to add multiple levels and a scoreboard leaderboard system. The graphics are currently temporary and will later be replaced with low-poly 3D models to increase the games visual appeal. I’m thinking that that will give the game a bit more character and lead me to thinking of a name for the game too. And once these things are at least improved upon, I plan to make the game playable through the web with WebGL, so that everyone can give it a run.
