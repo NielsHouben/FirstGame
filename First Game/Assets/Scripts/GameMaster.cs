@@ -8,7 +8,7 @@ public class GameMaster : MonoBehaviour
 {
     // Start is called before the first frame update
     private static GameMaster instance;
-    public Vector3 lastCheckPointPos;
+    public Vector3 lastCheckPointPos; //since this object isn't destroyed on scene reload, this variable will be available through respawns.
     void Awake() {
 
         if (instance == null) {
@@ -20,7 +20,7 @@ public class GameMaster : MonoBehaviour
         }
     }
     void Update() {
-        if ((Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl)) && Input.GetKeyDown(KeyCode.R))
+        if ((Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl)) && Input.GetKeyDown(KeyCode.R)) // allows manual restarting of the game.
         {
             Debug.Log("ctr R");
             Debug.Log(GameObject.Find("Game Master").GetComponent<TimerController>().elapsedTime);
