@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     }
 
     private void jump() {
-        if (availableJumps > 0) 
+        if (availableJumps > 0) // this is to make sure we can jump and jump extra when jump powerup is collected.
         {
             availableJumps--;
             float jumpPower = 5.7f;
@@ -60,8 +60,8 @@ public class Player : MonoBehaviour
     {
         if (speedTime > 0) // THIS IS NOT HOW TO DO IT, but works for now
         {   
-            speedTime--;   
-            rigidbodyComponent.velocity = new Vector3(horizontalInput * 6, rigidbodyComponent.velocity.y, 0);
+            speedTime--;  // reduces speedTime untill 0 then goes to else.
+            rigidbodyComponent.velocity = new Vector3(horizontalInput * 6, rigidbodyComponent.velocity.y, 0); 
         } else
         {
             rigidbodyComponent.velocity = new Vector3(horizontalInput * 3, rigidbodyComponent.velocity.y, 0);
@@ -80,9 +80,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerEnter(Collider other) { // when it triggers with another object it will check what tag the other object had and act accordingly.
         if (other.CompareTag("Coin")) { 
-            Destroy(other.gameObject);
+            Destroy(other.gameObject);//destroys the powerup
             score++;
         }
         if (other.CompareTag("JumpBoost")) { 
@@ -98,11 +98,11 @@ public class Player : MonoBehaviour
             // other.ParticleSystem.Play();
 
             Destroy(other.gameObject);
-            speedTime = 180;
+            speedTime = 180; //will enable if statment on line 61 which will increase speed and reduce speedTime
         }
-        if (other.CompareTag("Spikes")) { 
+        if (other.CompareTag("Spikes")) {  
             // Debug.Log("AJAJAJOJ");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // simply restarts the scene because dead by spike.
         }
     }
 
